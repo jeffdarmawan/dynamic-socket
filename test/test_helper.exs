@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(PhxBe.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(DynamicSocket.Repo, :manual)

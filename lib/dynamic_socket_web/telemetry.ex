@@ -1,4 +1,4 @@
-defmodule PhxBeWeb.Telemetry do
+defmodule DynamicSocketWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -52,23 +52,23 @@ defmodule PhxBeWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("phx_be.repo.query.total_time",
+      summary("dynamic_socket.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("phx_be.repo.query.decode_time",
+      summary("dynamic_socket.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("phx_be.repo.query.query_time",
+      summary("dynamic_socket.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("phx_be.repo.query.queue_time",
+      summary("dynamic_socket.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("phx_be.repo.query.idle_time",
+      summary("dynamic_socket.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -86,7 +86,7 @@ defmodule PhxBeWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {PhxBeWeb, :count_users, []}
+      # {DynamicSocketWeb, :count_users, []}
     ]
   end
 end

@@ -1,4 +1,4 @@
-defmodule PhxBe.Application do
+defmodule DynamicSocket.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,19 +8,19 @@ defmodule PhxBe.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      PhxBeWeb.Telemetry,
-      PhxBe.Repo,
-      {DNSCluster, query: Application.get_env(:phx_be, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: PhxBe.PubSub},
-      # Start a worker by calling: PhxBe.Worker.start_link(arg)
-      # {PhxBe.Worker, arg},
+      DynamicSocketWeb.Telemetry,
+      DynamicSocket.Repo,
+      {DNSCluster, query: Application.get_env(:dynamic_socket, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: DynamicSocket.PubSub},
+      # Start a worker by calling: DynamicSocket.Worker.start_link(arg)
+      # {DynamicSocket.Worker, arg},
       # Start to serve requests, typically the last entry
-      PhxBeWeb.Endpoint
+      DynamicSocketWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: PhxBe.Supervisor]
+    opts = [strategy: :one_for_one, name: DynamicSocket.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -28,7 +28,7 @@ defmodule PhxBe.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    PhxBeWeb.Endpoint.config_change(changed, removed)
+    DynamicSocketWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

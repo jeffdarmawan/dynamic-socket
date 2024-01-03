@@ -1,12 +1,12 @@
-defmodule PhxBeWeb do
+defmodule DynamicSocketWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use PhxBeWeb, :controller
-      use PhxBeWeb, :html
+      use DynamicSocketWeb, :controller
+      use DynamicSocketWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -39,7 +39,7 @@ defmodule PhxBeWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: PhxBeWeb.Layouts]
+        layouts: [html: DynamicSocketWeb.Layouts]
 
       import Plug.Conn
 
@@ -50,9 +50,9 @@ defmodule PhxBeWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: PhxBeWeb.Endpoint,
-        router: PhxBeWeb.Router,
-        statics: PhxBeWeb.static_paths()
+        endpoint: DynamicSocketWeb.Endpoint,
+        router: DynamicSocketWeb.Router,
+        statics: DynamicSocketWeb.static_paths()
     end
   end
 

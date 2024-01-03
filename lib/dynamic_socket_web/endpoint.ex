@@ -1,12 +1,12 @@
-defmodule PhxBeWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :phx_be
+defmodule DynamicSocketWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :dynamic_socket
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_phx_be_key",
+    key: "_dynamic_socket_key",
     signing_salt: "oflKFQmu",
     same_site: "Lax"
   ]
@@ -19,15 +19,15 @@ defmodule PhxBeWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :phx_be,
+    from: :dynamic_socket,
     gzip: false,
-    only: PhxBeWeb.static_paths()
+    only: DynamicSocketWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :phx_be
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :dynamic_socket
   end
 
   plug Plug.RequestId
@@ -41,5 +41,5 @@ defmodule PhxBeWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug PhxBeWeb.Router
+  plug DynamicSocketWeb.Router
 end

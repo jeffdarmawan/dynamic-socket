@@ -7,19 +7,19 @@
 # General application configuration
 import Config
 
-config :phx_be,
-  ecto_repos: [PhxBe.Repo], # list of database connections
+config :dynamic_socket,
+  ecto_repos: [DynamicSocket.Repo], # list of database connections
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :phx_be, PhxBeWeb.Endpoint,
+config :dynamic_socket, DynamicSocketWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
-    formats: [json: PhxBeWeb.ErrorJSON],
+    formats: [json: DynamicSocketWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: PhxBe.PubSub,
+  pubsub_server: DynamicSocket.PubSub,
   live_view: [signing_salt: "mSPDyVmp"]
 
 # Configures Elixir's Logger
